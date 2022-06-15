@@ -23,33 +23,36 @@ public class CommentController {
     // 댓글 전체 조회
     @GetMapping("/api/comments")
     public List<Comments> getAllOfComments() {
+        commentService.test1();
         return commentRepository.findAll();
     }
 
     // 레시피 상세 페이지 댓글 조회
-    @GetMapping("/api/comments/{recipeId}")
-    public List<Comments> getComments(@PathVariable Long recipeId) {
-        return commentRepository.findByRecipeIdOrderByCommentIdDesc(recipeId);
+    @GetMapping("/api/comments/{recipesId}")
+    public List<Comments> getComments(@PathVariable Long recipesId) {
+        return commentRepository.findByRecipesIdOrderByCommentsIdDesc(recipesId);
     }
 
     // 댓글 작성
     @PostMapping("/api/comments")
-    public void createComment(@RequestBody CommentDto commentDto) {
-        commentService.createComment(commentDto);
+    public Long createComment(@RequestBody CommentDto commentDto) {
+        return commentService.createComment(commentDto);
     }
 
     // 댓글 수정
     // controller 에서 사용자, 작성자 대조하는 경우
-    @PutMapping("/api/comments/{commentId}")
-    public void editComment(/*@AuthenticationPrincipal userDetail, */@PathVariable Long commentId, @RequestBody CommentDto commentDto){
+    @PutMapping("/api/comments/{commentsId}")
+    public Long editComment(/*@AuthenticationPrincipal userDetail, */@PathVariable Long commentsId, @RequestBody CommentDto commentDto){
 //        checkUsername(userDetail.getUsername(), commentDto.getUsername());
-        commentService.editComment(commentDto,commentId);
+        commentService.editComment(commentDto,commentsId);
+        return commentsId;
     }
 
     // 댓글 삭제
-    @DeleteMapping("/api/comments/{commentId}")
-    public void deleteComment(@PathVariable Long commentId, @RequestBody CommentDto commentDto){
-        commentService.deleteComment(commentDto, commentId);
+    @DeleteMapping("/api/comments/{commentsId}")
+    public Long deleteComment(@PathVariable Long commentsId, @RequestBody CommentDto commentDto){
+        commentService.deleteComment(commentDto, commentsId);
+        return commentsId;
     }
 
     // 작성자 체크

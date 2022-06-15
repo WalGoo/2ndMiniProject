@@ -16,31 +16,31 @@ import java.util.Optional;
 public class Recipes {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long recipeId;
+    private Long recipesId;
 
     @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
-    private String recipeTitle;
+    private String recipesTitle;
 
     @Column(nullable = false)
-    private String recipeContent;
+    private String recipesContent;
 
     @Column(nullable = false)
-    private String recipeImgUrl;
+    private String recipesImgUrl;
 
     public Recipes(RecipeDto recipeDto) {
         this.username = recipeDto.getUsername();
-        this.recipeTitle = recipeDto.getRecipeTitle();
-        this.recipeContent = recipeDto.getRecipeContent();
-        this.recipeImgUrl =  recipeDto.getRecipeImgUrl();
+        this.recipesTitle = recipeDto.getRecipesTitle();
+        this.recipesContent = recipeDto.getRecipesContent();
+        this.recipesImgUrl =  recipeDto.getRecipesImgUrl();
     }
 
     public void updateRecipe(RecipeDto recipeDto) {
-        this.recipeTitle = recipeDto.getRecipeTitle();
-        this.recipeContent = recipeDto.getRecipeContent();
-        this.recipeImgUrl = recipeDto.getRecipeImgUrl();
+        this.recipesTitle = recipeDto.getRecipesTitle();
+        this.recipesContent = recipeDto.getRecipesContent();
+        this.recipesImgUrl = recipeDto.getRecipesImgUrl();
     }
 
 

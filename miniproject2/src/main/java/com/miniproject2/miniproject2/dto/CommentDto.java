@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CommentDto {
-    private Long commentId;
-    private String commentContent;
-    private Long recipeId;
+    private Long commentsId;
+    private String commentsContent;
+    private Long recipesId;
     private String username;
 
 }

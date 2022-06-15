@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipes, Long> {
 
-    List<Recipes> findAllByOrderByRecipeIdDesc();
+    List<Recipes> findAllByOrderByRecipesIdAsc();
 
-    Recipes findByRecipeId(Long recipeId);
+    Recipes findByRecipesId(Long recipeId);
 }

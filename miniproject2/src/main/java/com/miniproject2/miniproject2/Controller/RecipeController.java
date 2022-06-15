@@ -22,34 +22,36 @@ public class RecipeController {
     }
 
     // 레시피 전체 조회
-    @GetMapping("/api/boards")
+    @GetMapping("/api/board")
     public List<Recipes> giveAllOfRecipes() {
-        System.out.println(recipeRepository.findAllByOrderByRecipeIdDesc());
-        return recipeRepository.findAllByOrderByRecipeIdDesc();
+        System.out.println(recipeRepository.findAllByOrderByRecipesIdAsc());
+        return recipeRepository.findAllByOrderByRecipesIdAsc();
     }
 
     // 레시피 수정
-    @PutMapping("/api/boards/{recipeId}")
-    public void editRecipe(@PathVariable Long recipeId, @RequestBody RecipeDto recipeDto) {
-        recipeService.editRecipe(recipeDto, recipeId);
+    @PutMapping("/api/board/{recipesId}")
+    public Long editRecipe(@PathVariable Long recipesId, @RequestBody RecipeDto recipeDto) {
+        recipeService.editRecipe(recipeDto, recipesId);
+        return recipesId;
     }
 
     // 레시피 삭제
-    @DeleteMapping("/api/boards/{recipeId}")
-    public void deleteRecipe(@PathVariable Long recipeId) {
-        recipeService.deleteRecipe(recipeId);
+    @DeleteMapping("/api/board/{recipesId}")
+    public Long deleteRecipe(@PathVariable Long recipesId) {
+        recipeService.deleteRecipe(recipesId);
+        return recipesId;
     }
 
     // 레시피 작성
-    @PostMapping("/api/boards")
-    public void createRecipe(@RequestBody RecipeDto recipeDto) {
-        recipeService.createRecipe(recipeDto);
+    @PostMapping("/api/board")
+    public Long createRecipe(@RequestBody RecipeDto recipeDto) {
+        return recipeService.createRecipe(recipeDto);
     }
 
     // 레시피 상세 조회
-    @GetMapping("/api/boards/{recipeId}")
-    public Recipes giveRecipe(@PathVariable Long recipeId) {
-        return recipeService.selectRecipe(recipeId);
+    @GetMapping("/api/board/{recipesId}")
+    public Recipes giveRecipe(@PathVariable Long recipesId) {
+        return recipeService.selectRecipe(recipesId);
     }
 
 }

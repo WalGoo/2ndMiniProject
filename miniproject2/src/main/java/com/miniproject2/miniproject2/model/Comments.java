@@ -14,25 +14,25 @@ import javax.persistence.*;
 @Setter
 public class Comments {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentId;
+    private Long commentsId;
 
     @Column(nullable = false)
-    private String commentContent;
+    private String commentsContent;
 
     @Column(nullable = false)
-    private Long recipeId;
+    private Long recipesId;
 
     @Column(nullable = false)
     private String username;
 
     public Comments(CommentDto commentDto) {
-        this.commentContent = commentDto.getCommentContent();
-        this.recipeId = commentDto.getRecipeId();
+        this.commentsContent = commentDto.getCommentsContent();
+        this.recipesId = commentDto.getRecipesId();
         this.username = commentDto.getUsername();
     }
 
     // 댓글 수정
     public void updateComments(CommentDto commentDto) {
-        this.commentContent = commentDto.getCommentContent();
+        this.commentsContent = commentDto.getCommentsContent();
     }
 }
